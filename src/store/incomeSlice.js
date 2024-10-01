@@ -1,12 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-// Function to load income entries from localStorage
 const loadIncomeEntriesFromLocalStorage = () => {
   const savedEntries = localStorage.getItem("incomeEntry");
   return savedEntries ? JSON.parse(savedEntries) : [];
 };
 
-// Initial state with income entries loaded from localStorage
 const initialState = {
   incomeEntry: loadIncomeEntriesFromLocalStorage(),
   formData: {
@@ -24,12 +22,12 @@ const incomeSlice = createSlice({
   reducers: {
     addIncomeEntry(state) {
       state.incomeEntry.push(state.formData);
-      localStorage.setItem("incomeEntry", JSON.stringify(state.incomeEntry)); // Save to localStorage
-      state.formData = initialState.formData; // Reset form data after adding entry
+      localStorage.setItem("incomeEntry", JSON.stringify(state.incomeEntry));
+      state.formData = initialState.formData;
     },
     deleteIncomeEntry(state, action) {
       state.incomeEntry.splice(action.payload, 1);
-      localStorage.setItem("incomeEntry", JSON.stringify(state.incomeEntry)); // Update localStorage
+      localStorage.setItem("incomeEntry", JSON.stringify(state.incomeEntry));
     },
     updateFormData(state, action) {
       state.formData = { ...state.formData, ...action.payload };

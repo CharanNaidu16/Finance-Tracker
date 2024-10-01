@@ -1,4 +1,3 @@
-// src/components/SavingsGoals.js
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addGoal, updateGoal, deleteGoal } from "../store/savingsGoalsSlice";
